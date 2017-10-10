@@ -6,8 +6,9 @@ namespace TestsWithGenerics.Tests
 {
     [TestFixture]
     public class TestCarDealership
-    {
-        [Test]
+	{
+		#region Test that CarDealership class implements type inheritance
+		[Test]
         public void Test_that_CarDealership_class_implements_type_inheritance()
         {
             var carDealership = new CarDealership<ICar>();
@@ -31,6 +32,36 @@ namespace TestsWithGenerics.Tests
 
 	        var dealership1 = carDealership2 as Dealership<Car>;
 	        Assert.That(dealership1 != null);
-        }
-    }
+		}
+		#endregion
+
+		#region Test that CarDealership instance implements IDealership methods
+		[Test]
+		public void Test_that_CarDealership_instance_implements_IDealership_methods()
+		{
+			var carDealership = new CarDealership<ICar>();
+
+			var listOfCarsAvailable = carDealership.GetListOfVehicles();
+
+			Assert.That(listOfCarsAvailable, Is.Not.Null);
+			Assert.That(listOfCarsAvailable, Is.Empty);
+		}
+		#endregion
+
+		/*
+		#region Test that CarDealership instance implements ICarDealership methods
+		[Test]
+		public void Test_that_CarDealership_instance_implements_ICarDealership_methods()
+		{
+			var carDealership = new CarDealership<ICar>();
+			var car = new Car();
+
+			var listOfCarsAvailable = carDealership.GetListOfVehicles();
+
+			Assert.That(listOfCarsAvailable, Is.Not.Null);
+			Assert.That(listOfCarsAvailable, Is.Empty);
+		}
+		#endregion
+		*/
+	}
 }
