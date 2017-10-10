@@ -56,7 +56,8 @@
     <Compile Include="Classes\Vehicles\IVehicle.cs" />
     <Compile Include="Classes\Vehicles\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tests\TestDealership.cs" />
+    <Compile Include="Tests\TestICarDealership.cs" />
+    <Compile Include="Tests\TestCarDealership.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

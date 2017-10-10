@@ -5,24 +5,8 @@ using TestsWithGenerics.Classes.Vehicles;
 namespace TestsWithGenerics.Tests
 {
     [TestFixture]
-    class TestsForClasses
+    public class TestCarDealership
     {
-        [Test]
-        public void Test_that_CarDealership_class_implements_interface_inheritance()
-        {
-			var carDealership = new CarDealership<ICar>();
-
-            Assert.That(carDealership, Is.Not.TypeOf<IDealership<IVehicle>>());
-			Assert.That(carDealership, Is.Not.TypeOf<IDealership<IBike>>());			
-			Assert.That(carDealership, Is.Not.TypeOf<IDealership<ICar>>());	
-			Assert.That(carDealership, Is.Not.TypeOf<ICarDealership<ICar>>());
-			
-			Assert.That(carDealership, Is.TypeOf<CarDealership<ICar>>());
-
-			Assert.That(carDealership is ICarDealership<ICar>);
-			Assert.That(carDealership is IDealership<ICar>);
-        }
-
         [Test]
         public void Test_that_CarDealership_class_implements_type_inheritance()
         {
@@ -42,8 +26,11 @@ namespace TestsWithGenerics.Tests
 			Assert.That(carDealership2, Is.Not.TypeOf<CarDealership<ICar>>());
 			Assert.That(carDealership2, Is.TypeOf<CarDealership<Car>>());
 
-			Assert.That(carDealership2 is CarDealership<Car>);
-			Assert.That(carDealership2 is Dealership<Car>);
+	        var dealership = carDealership2 as CarDealership<Car>;
+	        Assert.That(dealership != null);
+
+	        var dealership1 = carDealership2 as Dealership<Car>;
+	        Assert.That(dealership1 != null);
         }
     }
 }
